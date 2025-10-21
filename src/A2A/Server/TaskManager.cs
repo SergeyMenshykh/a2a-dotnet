@@ -299,9 +299,12 @@ public sealed class TaskManager : ITaskManager
         using var activity = ActivitySource.StartActivity("SubscribeToTask", ActivityKind.Server);
         activity?.SetTag("task.id", taskIdParams.Id);
 
-        return _taskUpdateEventEnumerators.TryGetValue(taskIdParams.Id, out var enumerator) ?
-            (IAsyncEnumerable<A2AEvent>)enumerator :
-            throw new A2AException("Task not found or invalid TaskIdParams.", A2AErrorCode.TaskNotFound);
+        if (_taskUpdateEventEnumerators.TryGetValue(taskIdParams.Id, out var enumerator))
+        {
+            return (IAsyncEnumerable<A2AEvent>)enumerator;
+        }
+
+        throw new A2AException("Task not found or invalid TaskIdParams.", A2AErrorCode.TaskNotFound);
     }
 
     /// <inheritdoc />
