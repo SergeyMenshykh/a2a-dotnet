@@ -83,7 +83,7 @@ public class A2AServer : IA2ARequestHandler, IAsyncDisposable
                     context, cancellationToken).ConfigureAwait(false);
             }
 
-            bool returnImmediately = request.Configuration?.ReturnImmediately == true;
+            bool returnImmediately = request.Configuration?.Blocking is not true;
 
             var eventQueue = new AgentEventQueue();
             // For return-immediately, use a long-lived CTS that outlives the HTTP request

@@ -15,5 +15,5 @@ public sealed class SendMessageConfiguration
     public int? HistoryLength { get; set; }
 
     /// <summary>Gets or sets whether to return immediately without waiting for task completion.</summary>
-    public bool ReturnImmediately { get; set; }
+    public bool Blocking { get; set; }
 }

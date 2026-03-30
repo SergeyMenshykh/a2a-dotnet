@@ -156,7 +156,7 @@ internal sealed class TaskBasedCommunicationSample
         SendMessageResponse response = await agentClient.SendMessageAsync(new SendMessageRequest
         {
             Message = userMessage,
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = false },
         });
         sw.Stop();
 

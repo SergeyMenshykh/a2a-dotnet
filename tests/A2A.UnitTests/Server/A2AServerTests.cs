@@ -623,7 +623,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = true },
         };
 
         // Act — should return well before the 5s delay
@@ -669,7 +669,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = true },
         };
 
         // Act
@@ -708,7 +708,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = true },
         };
 
         // Act — returns quickly
@@ -752,7 +752,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = false },
+            Configuration = new SendMessageConfiguration { Blocking = false },
         };
 
         // Act
@@ -804,7 +804,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = true },
         };
 
         // Act — send with return-immediately, then cancel
@@ -863,7 +863,7 @@ public class A2AServerTests
         var request = new SendMessageRequest
         {
             Message = new Message { MessageId = "u1", Parts = [Part.FromText("Hello!")], Role = Role.User },
-            Configuration = new SendMessageConfiguration { ReturnImmediately = true },
+            Configuration = new SendMessageConfiguration { Blocking = true },
         };
 
         // Act — send with return-immediately, then dispose the server
